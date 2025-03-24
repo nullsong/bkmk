@@ -9,3 +9,11 @@ spring:
     username: hu # 데이터베이스 사용자 이름
     password: root1234 # 데이터베이스 비밀번호
     driver-class-name: com.mysql.cj.jdbc.Driver # JDBC 드라이버 설정1
+  jpa:
+    hibernate:
+      ddl-auto: update # JPA 설정 (자동으로 스키마 업데이트)
+    show-sql: true # 실행되는 SQL을 콘솔에 출력
+
+logging:
+  level:
+    org.springframework: DEBUG # Spring 관련 로그 레벨 설정
