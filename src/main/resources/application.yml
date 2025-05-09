@@ -6,8 +6,8 @@ spring:
     name: bookmarker
   datasource:
     url: jdbc:mysql://localhost:3306/bkmk # 데이터베이스 URL 설정
-    username: hu # 데이터베이스 사용자 이름
-    password: root1234 # 데이터베이스 비밀번호
+    username: hu 
+    password: root1234 
     driver-class-name: com.mysql.cj.jdbc.Driver # JDBC 드라이버 설정1
   # jpa:
   #   hibernate:
@@ -16,4 +16,4 @@ spring:
 
 logging:
   level:
-    org.springframework: DEBUG # Spring 관련 로그 레벨 설정
+    org.springframework: INFO # Spring 관련 로그 레벨 설정

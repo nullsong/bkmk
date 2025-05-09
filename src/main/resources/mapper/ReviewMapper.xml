@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hu.bookmarker.api.review.mapper.IReviewMapper">
+
+  <select id="selectMyReview" parameterType="hu.bookmarker.api.review.model.ReviewDTO" resultType="hu.bookmarker.api.review.model.ReviewDTO">
+  /* IReviewMapper.selectMyReview : 나의 리뷰 조회  */
+  SELECT REVIEW_ID
+       , USER_ID
+       , BOOK_SRNO
+       , REVIEW_RATING
+       , REVIEW_TEXT
+       , REG_DTM
+       , MOD_DTM
+    FROM REVIEWS
+   WHERE USER_ID = #{userId}
+     AND BOOK_SRNO = #{bookSrno}
+  </select>
+
+</mapper>

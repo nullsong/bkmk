@@ -3,6 +3,7 @@
 <mapper namespace="hu.bookmarker.api.book.mapper.IBookMapper">
 
   <select id="selectBookInfo" parameterType="hu.bookmarker.api.book.model.BookDTO" resultType="hu.bookmarker.api.book.model.BookDTO">
+  /* IBookMapper.selectBookInfo : 도서 정보 조회 */
   SELECT TITLE
        , AUTHOR
        , PUBLISHER
