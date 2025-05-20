@@ -17,3 +17,8 @@ spring:
 logging:
   level:
     org.springframework: INFO # Spring 관련 로그 레벨 설정
+
+naver:
+  clientId: SzgEN9VXSOHN5bk3CsNP
+  clientPw: _071veCjxt
+  apiUrl: https://openapi.naver.com/v1/search/book.json

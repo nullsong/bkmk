@@ -18,4 +18,6 @@ public class BookDTO {
     private String publishedDate;
     private String isbn;
     private String regDtm;
+
+    private String keyword;
 }
