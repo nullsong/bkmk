@@ -4,13 +4,40 @@
 
   <select id="selectBookInfo" parameterType="hu.bookmarker.api.book.model.BookDTO" resultType="hu.bookmarker.api.book.model.BookDTO">
   /* IBookMapper.selectBookInfo : 도서 정보 조회 */
-  SELECT TITLE
+  SELECT BOOK_SRNO
+       , TITLE
        , AUTHOR
        , PUBLISHER
        , PUBLISHED_DATE
        , ISBN
+       , IMAGE
+       , DESCRIPTION
        , REG_DTM
     FROM BOOKS
+   WHERE ISBN = #{isbn}
   </select>
+
+  <insert id="insertBookInfo" parameterType="hu.bookmarker.api.book.model.BookDTO" useGeneratedKeys="true" keyProperty="bookSrno">
+  /* IBookMapper.insertBookInfo : 도서 정보 등록 */
+  INSERT INTO BOOKS (
+         TITLE
+       , AUTHOR
+       , PUBLISHER
+       , PUBLISHED_DATE
+       , ISBN
+       , IMAGE
+       , DESCRIPTION
+       , REG_DTM
+  ) VALUES (
+         #{title}
+       , #{author}
+       , #{publisher}
+       , #{publishedDate}
+       , #{isbn}
+       , #{image}
+       , #{description}
+       , NOW()
+  )
+  </insert>
 
 </mapper>

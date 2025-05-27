@@ -1,5 +1,6 @@
 package hu.bookmarker.api.review.model;
 
+import hu.bookmarker.api.book.model.BookDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +19,6 @@ public class ReviewDTO {
     private String reviewText;
     private String regDtm;
     private String modDtm;
+    
+    private BookDTO bookInfo;
 }

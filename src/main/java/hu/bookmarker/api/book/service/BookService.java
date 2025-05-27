@@ -48,6 +48,21 @@ public class BookService {
     }
 
     /**
+     * 도서 정보 조회
+     */
+    public BookDTO createBookInfo(BookDTO reqDto) {
+        //1. db에서 책 존재 여부 확인
+        BookDTO bookDto = iBookMapper.selectBookInfo(reqDto);
+
+        // 2. 없을 경우에 insert
+        if (bookDto == null) {
+            iBookMapper.insertBookInfo(reqDto);
+            return reqDto;
+        }
+        return bookDto;
+    }
+
+    /**
      * 도서 정보 조회 (네이버 api)
      */
     public List<BookDTO> getBooks(BookDTO reqDto){
@@ -77,6 +92,8 @@ public class BookService {
                 dto.setPublisher(node.get("publisher").asText());
                 dto.setPublishedDate(node.get("pubdate").asText());
                 dto.setIsbn(node.get("isbn").asText());
+                dto.setImage(node.get("image").asText());
+                dto.setDescription(node.get("description").asText());
                 result.add(dto);
             }
         } catch (Exception e) {

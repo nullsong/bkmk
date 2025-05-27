@@ -9,5 +9,12 @@ public interface IBookMapper {
      * @param reqDto
      * @return
      */
-    public BookDTO selectBookInfo(BookDTO reqDto);
+    BookDTO selectBookInfo(BookDTO reqDto);
+    
+    /**
+     * 도서 정보 등록
+     * @param reqDto
+     * @return
+     */
+    int insertBookInfo(BookDTO reqDto);
 }

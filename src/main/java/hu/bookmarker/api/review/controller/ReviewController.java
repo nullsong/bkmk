@@ -1,6 +1,7 @@
 package hu.bookmarker.api.review.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +26,18 @@ public class ReviewController {
                                     .userId(reqDto.getUserId())
                                     .bookSrno(reqDto.getBookSrno()).build();
         return reviewService.getMyReview(reviewDto);
+    }
+
+    @PostMapping("/")
+    public int createMyReview(@RequestBody final ReviewDTO reqDto) {
+        log.info("*** createMyReview *** ");
+        ReviewDTO reviewDto = ReviewDTO.builder()
+                                    .userId(1)
+                                    .reviewRating(reqDto.getReviewRating())
+                                    .reviewText("aaaa")
+                                    .bookInfo(reqDto.getBookInfo())
+                                    .build();
+        return reviewService.createMyReview(reviewDto);
+
     }
 }

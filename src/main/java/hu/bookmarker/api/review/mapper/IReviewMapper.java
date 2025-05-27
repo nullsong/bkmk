@@ -9,5 +9,13 @@ public interface IReviewMapper {
      * @param reqDto
      * @return
      */
-    public ReviewDTO selectMyReview(ReviewDTO reqDto);
+    ReviewDTO selectMyReview(ReviewDTO reqDto);
+
+        
+    /**
+     * 나의 리뷰 등록
+     * @param reqDto
+     * @return
+     */
+    int insertMyReview(ReviewDTO reqDto);
 }

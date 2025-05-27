@@ -16,4 +16,23 @@
      AND BOOK_SRNO = #{bookSrno}
   </select>
 
+    <insert id="insertMyReview" parameterType="hu.bookmarker.api.review.model.ReviewDTO">
+  /* IBookMapper.insertMyReview : 나의 리뷰 등록 */
+  INSERT INTO REVIEWS (
+         USER_ID
+       , BOOK_SRNO
+       , REVIEW_RATING
+       , REVIEW_TEXT
+       , REG_DTM
+       , MOD_DTM
+  ) VALUES (
+         #{userId}
+       , #{bookSrno}
+       , #{reviewRating}
+       , #{reviewText}
+       , NOW()
+       , NOW()
+  )
+  </insert>
+
 </mapper>
