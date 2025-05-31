@@ -1,5 +1,7 @@
 package hu.bookmarker.api.review.mapper;
 
+import java.util.List;
+
 import hu.bookmarker.api.review.model.ReviewDTO;
 
 public interface IReviewMapper {
@@ -11,7 +13,13 @@ public interface IReviewMapper {
      */
     ReviewDTO selectMyReview(ReviewDTO reqDto);
 
-        
+    /**
+     * 리뷰 목록 조회
+     * @param reqDto
+     * @return
+     */
+    List<ReviewDTO> selectReviews(ReviewDTO reqDto);
+
     /**
      * 나의 리뷰 등록
      * @param reqDto

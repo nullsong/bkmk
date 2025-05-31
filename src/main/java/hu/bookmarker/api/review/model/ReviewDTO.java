@@ -20,5 +20,6 @@ public class ReviewDTO {
     private String regDtm;
     private String modDtm;
     
+    private String title;
     private BookDTO bookInfo;
 }

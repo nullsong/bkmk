@@ -16,7 +16,20 @@
      AND BOOK_SRNO = #{bookSrno}
   </select>
 
-    <insert id="insertMyReview" parameterType="hu.bookmarker.api.review.model.ReviewDTO">
+  <select id="selectReviews" parameterType="hu.bookmarker.api.review.model.ReviewDTO" resultType="hu.bookmarker.api.review.model.ReviewDTO">
+  /* IReviewMapper.selectReviews : 리뷰 목록 조회  */
+  SELECT B.TITLE
+       , A.REVIEW_RATING
+       , A.REG_DTM
+       , A.MOD_DTM
+    FROM REVIEWS A
+    JOIN BOOKS B
+      ON A.BOOK_SRNO = B.BOOK_SRNO
+   WHERE A.USER_ID = #{userId}
+   ORDER BY A.REG_DTM DESC
+  </select>
+
+  <insert id="insertMyReview" parameterType="hu.bookmarker.api.review.model.ReviewDTO">
   /* IBookMapper.insertMyReview : 나의 리뷰 등록 */
   INSERT INTO REVIEWS (
          USER_ID

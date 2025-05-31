@@ -1,5 +1,7 @@
 package hu.bookmarker.api.review.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import hu.bookmarker.api.book.model.BookDTO;
@@ -22,6 +24,13 @@ public class ReviewService {
      */
     public ReviewDTO getMyReview(ReviewDTO reqDto) {
         return iReviewMapper.selectMyReview(reqDto);
+    }
+
+    /**
+     * 리뷰 목록 조회
+     */
+    public List<ReviewDTO> getReviews(ReviewDTO reqDto) {
+        return iReviewMapper.selectReviews(reqDto);
     }
 
     /**
