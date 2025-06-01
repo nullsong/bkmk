@@ -5,10 +5,11 @@ spring:
   application:
     name: bookmarker
   datasource:
-    url: jdbc:mysql://localhost:3306/bkmk # 데이터베이스 URL 설정
+    url: jdbc:log4jdbc:mysql://localhost:3306/bkmk
     username: hu 
     password: root1234 
-    driver-class-name: com.mysql.cj.jdbc.Driver # JDBC 드라이버 설정1
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+
   # jpa:
   #   hibernate:
   #     ddl-auto: update # JPA 설정 (자동으로 스키마 업데이트)
