@@ -21,6 +21,7 @@ public class ReviewDTO {
     private String modDtm;
     
     private String title;
+    private String isbn;
     private String image;
     private BookDTO bookInfo;
 }

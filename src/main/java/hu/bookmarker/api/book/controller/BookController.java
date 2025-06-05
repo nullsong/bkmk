@@ -27,10 +27,11 @@ public class BookController {
         return bookService.getBooks(reqDto);
     }
 
-    // @GetMapping("/info")
-    // public BookDTO getBookInfo(@RequestParam(required = true, name = "bookSrno") final Integer bookSrno) {
-    //     log.info("*** getBookInfo : {} ***", bookSrno);
-    //     BookDTO reqDto = BookDTO.builder().bookSrno(bookSrno).build();
-    //     return bookService.getBookInfo(reqDto);
-    // }
+    @GetMapping("/info")
+    public BookDTO getBookInfo(@RequestParam(required = true, name = "bookSrno") final Integer bookSrno
+                             , @RequestParam(required = true, name = "isbn") final String isbn) {
+        log.info("*** getBookInfo : {} ***", bookSrno);
+        BookDTO reqDto = BookDTO.builder().bookSrno(bookSrno).isbn(isbn).build();
+        return bookService.getBookInfo(reqDto);
+    }
 }
