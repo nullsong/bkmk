@@ -28,10 +28,9 @@ public class BookController {
     }
 
     @GetMapping("/info")
-    public BookDTO getBookInfo(@RequestParam(required = true, name = "bookSrno") final Integer bookSrno
-                             , @RequestParam(required = true, name = "isbn") final String isbn) {
-        log.info("*** getBookInfo : {} ***", bookSrno);
-        BookDTO reqDto = BookDTO.builder().bookSrno(bookSrno).isbn(isbn).build();
+    public BookDTO getBookInfo(@RequestParam(required = true, name = "isbn") final String isbn) {
+        log.info("*** getBookInfo : {} ***", isbn);
+        BookDTO reqDto = BookDTO.builder().isbn(isbn).build();
         return bookService.getBookInfo(reqDto);
     }
 }
