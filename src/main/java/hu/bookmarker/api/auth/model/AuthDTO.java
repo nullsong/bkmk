@@ -1,9 +1,9 @@
-package hu.bookmarker.api.login.model;
+package hu.bookmarker.api.auth.model;
 
 import lombok.Data;
 
 @Data
-public class LoginDTO {
+public class AuthDTO {
     private String userId;
     private String password;
 }
