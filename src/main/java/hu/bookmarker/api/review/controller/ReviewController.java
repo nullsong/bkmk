@@ -23,7 +23,7 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @GetMapping("/")
-    public ReviewDTO getMyReview(@RequestParam(required = true, name = "userId") final Integer userId
+    public ReviewDTO getMyReview(@RequestParam(required = true, name = "userId") final String userId
                                , @RequestParam(required = true, name = "bookSrno") final Integer bookSrno){
         log.info("*** getMyReview *** ");
         ReviewDTO reviewDto = ReviewDTO.builder()
@@ -33,7 +33,7 @@ public class ReviewController {
     }
 
     @GetMapping("/list")
-    public List<ReviewDTO> getReviews(@RequestParam(required = true, name = "userId") final Integer userId){
+    public List<ReviewDTO> getReviews(@RequestParam(required = true, name = "userId") final String userId){
         log.info("*** getReviews *** ");
         ReviewDTO reviewDto = ReviewDTO.builder()
                                     .userId(userId)
@@ -46,9 +46,9 @@ public class ReviewController {
     public int createMyReview(@RequestBody final ReviewDTO reqDto) {
         log.info("*** createMyReview *** ");
         ReviewDTO reviewDto = ReviewDTO.builder()
-                                    .userId(1)
+                                    .userId(reqDto.getUserId())
                                     .reviewRating(reqDto.getReviewRating())
-                                    .reviewText("aaaa")
+                                    .reviewText(reqDto.getReviewText())
                                     .bookInfo(reqDto.getBookInfo())
                                     .build();
         return reviewService.createMyReview(reviewDto);
