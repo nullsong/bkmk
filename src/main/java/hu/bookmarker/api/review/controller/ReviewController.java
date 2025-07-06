@@ -24,11 +24,11 @@ public class ReviewController {
 
     @GetMapping("/")
     public ReviewDTO getMyReview(@RequestParam(required = true, name = "userId") final String userId
-                               , @RequestParam(required = true, name = "bookSrno") final Integer bookSrno){
+                               , @RequestParam(required = true, name = "isbn") final String isbn){
         log.info("*** getMyReview *** ");
         ReviewDTO reviewDto = ReviewDTO.builder()
                                     .userId(userId)
-                                    .bookSrno(bookSrno).build();
+                                    .isbn(isbn).build();
         return reviewService.getMyReview(reviewDto);
     }
 

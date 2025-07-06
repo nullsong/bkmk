@@ -40,7 +40,7 @@ public class ReviewService {
         // 도서 정보 조회
         BookDTO bDto = reqDto.getBookInfo();
         BookDTO resDto = bookService.createBookInfo(bDto);
-        reqDto.setBookSrno(resDto.getBookSrno());
+        reqDto.setIsbn(resDto.getIsbn());
 
         return iReviewMapper.insertMyReview(reqDto);
     }

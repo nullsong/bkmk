@@ -14,14 +14,14 @@ public class ReviewDTO {
 
     private int reviewId;
     private String userId;
-    private int bookSrno;
+    private String isbn;
     private int reviewRating;
     private String reviewText;
     private String regDtm;
     private String modDtm;
     
     private String title;
-    private String isbn;
     private String image;
+    private int bookSrno;
     private BookDTO bookInfo;
 }
