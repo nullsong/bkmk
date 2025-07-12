@@ -16,21 +16,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReviewService {
 
-    private final IReviewMapper iReviewMapper;
+    private final IReviewMapper reviewMapper;
     private final BookService bookService;
 
     /**
      * 나의 리뷰 조회 
      */
     public ReviewDTO getMyReview(ReviewDTO reqDto) {
-        return iReviewMapper.selectMyReview(reqDto);
+        return reviewMapper.selectMyReview(reqDto);
     }
 
     /**
      * 리뷰 목록 조회
      */
     public List<ReviewDTO> getReviews(ReviewDTO reqDto) {
-        return iReviewMapper.selectReviews(reqDto);
+        return reviewMapper.selectReviews(reqDto);
     }
 
     /**
@@ -42,6 +42,20 @@ public class ReviewService {
         BookDTO resDto = bookService.createBookInfo(bDto);
         reqDto.setIsbn(resDto.getIsbn());
 
-        return iReviewMapper.insertMyReview(reqDto);
+        return reviewMapper.insertMyReview(reqDto);
+    }
+
+    /**
+     * 나의 리뷰 수정
+     */
+    public int modifyMyReview(ReviewDTO reviewDTO) {
+        return reviewMapper.updateMyReview(reviewDTO);
+    }
+
+    /**
+     * 나의 리뷰 삭제
+     */
+    public int removeMyReview(ReviewDTO reviewDTO) {
+        return reviewMapper.deleteMyReview(reviewDTO);
     }
 }

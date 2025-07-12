@@ -26,4 +26,18 @@ public interface IReviewMapper {
      * @return
      */
     int insertMyReview(ReviewDTO reqDto);
+
+    /**
+     * 나의 리뷰 수정
+     * @param reqDto
+     * @return
+     */
+    int updateMyReview(ReviewDTO reqDto);
+
+    /**
+     * 나의 리뷰 삭제
+     * @param reqDto
+     * @return
+     */
+    int deleteMyReview(ReviewDTO reqDto);
 }

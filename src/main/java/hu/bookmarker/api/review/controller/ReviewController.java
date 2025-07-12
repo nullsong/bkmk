@@ -2,8 +2,11 @@ package hu.bookmarker.api.review.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,6 +55,23 @@ public class ReviewController {
                                     .bookInfo(reqDto.getBookInfo())
                                     .build();
         return reviewService.createMyReview(reviewDto);
+    }
+    
+    @PutMapping("/{reviewId}")
+    public int modifyMyReview(@PathVariable (required = true) Integer reviewId
+                            , @RequestBody final ReviewDTO reqDto) {
+        log.info("*** modifyMyReview *** ");
+        reqDto.setReviewId(reviewId);
+        return reviewService.modifyMyReview(reqDto);
+    }
 
+    @DeleteMapping("/{reviewId}")
+    public int removeMyReview(@PathVariable (required = true) Integer reviewId
+                            , @RequestParam(required = true, name = "userId") final String userId) {
+        log.info("*** removeMyReview *** ");
+        ReviewDTO reviewDto = ReviewDTO.builder()
+                                    .userId(userId)
+                                    .reviewId(reviewId).build();
+        return reviewService.removeMyReview(reviewDto);
     }
 }

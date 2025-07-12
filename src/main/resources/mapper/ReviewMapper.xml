@@ -51,4 +51,21 @@
   )
   </insert>
 
+  <update id="updateMyReview" parameterType="hu.bookmarker.api.review.model.ReviewDTO">
+  /* IReviewMapper.updateMyReview : 나의 리뷰 수정 */
+  UPDATE REVIEWS
+     SET REVIEW_RATING = #{reviewRating}
+       , REVIEW_TEXT = #{reviewText}
+       , MOD_DTM = NOW()
+   WHERE USER_ID = #{userId}
+     AND REVIEW_ID = #{reviewId}
+  </update>
+  
+  <delete id="deleteMyReview" parameterType="hu.bookmarker.api.review.model.ReviewDTO">
+  /* IReviewMapper.deleteMyReview : 나의 리뷰 삭제 */
+  DELETE FROM REVIEWS
+   WHERE USER_ID = #{userId}
+     AND REVIEW_ID = #{reviewId} 
+  </delete>
+
 </mapper>
