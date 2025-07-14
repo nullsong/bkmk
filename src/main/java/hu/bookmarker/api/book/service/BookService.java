@@ -2,6 +2,8 @@ package hu.bookmarker.api.book.service;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,10 +89,15 @@ public class BookService {
 
             for (JsonNode node : items) {
                 BookDTO dto = new BookDTO();
+
+                String data = node.get("pubdate").asText();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+                LocalDate localDate = LocalDate.parse(data, formatter);
+
                 dto.setTitle(node.get("title").asText());
                 dto.setAuthor(node.get("author").asText());
                 dto.setPublisher(node.get("publisher").asText());
-                dto.setPublishedDate(node.get("pubdate").asText());
+                dto.setPublishedDate(localDate);
                 dto.setIsbn(node.get("isbn").asText());
                 dto.setImage(node.get("image").asText());
                 dto.setDescription(node.get("description").asText());

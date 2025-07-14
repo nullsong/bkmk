@@ -1,5 +1,7 @@
 package hu.bookmarker.api.book.model;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +17,7 @@ public class BookDTO {
     private String title;
     private String author;
     private String publisher;
-    private String publishedDate;
+    private LocalDate publishedDate;
     private String isbn;
     private String image;
     private String description;
