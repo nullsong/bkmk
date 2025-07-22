@@ -1,23 +1,13 @@
-server:
-  port: ${PORT:8080}
-
 spring:
+  profiles:
+    # active: local 
+    active: prod
   application:
     name: bookmarker
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    # driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+
+naver:
+  apiUrl: https://openapi.naver.com/v1/search/book.json
 
 logging:
   level:
     org.springframework: INFO # Spring 관련 로그 레벨 설정
-
-naver:
-  clientId: ${CLIENT_ID}
-  clientPw: ${CLIENT_PW}
-  apiUrl: https://openapi.naver.com/v1/search/book.json
-
-jwt:
-  secretKey: ${SECRET_KEY}
