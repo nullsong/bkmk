@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDTO {
-
     private int bookSrno;           
     private String title;
     private String author;
@@ -21,7 +20,4 @@ public class BookDTO {
     private String isbn;
     private String image;
     private String description;
-
-    private String regDtm;
-    private String keyword;
 }

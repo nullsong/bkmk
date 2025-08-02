@@ -22,6 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import hu.bookmarker.api.book.mapper.IBookMapper;
 import hu.bookmarker.api.book.model.BookDTO;
+import hu.bookmarker.api.book.model.BookResDTO;
+import hu.bookmarker.api.book.model.BookSearchDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -67,26 +69,29 @@ public class BookService {
     /**
      * 도서 정보 조회 (네이버 api)
      */
-    public List<BookDTO> getBooks(BookDTO reqDto){
+    public BookResDTO getBooks(BookSearchDTO reqDto){
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-Naver-Client-Id", ID);
         headers.set("X-Naver-Client-Secret", PW);
         headers.setContentType(MediaType.APPLICATION_JSON);
         
         String keyword = reqDto.getKeyword();
+        int start = reqDto.getStart();
         String encoded = UriUtils.encode(keyword, StandardCharsets.UTF_8);
-        String url = SEARCH_API_URL + "?query=" + encoded;
+        String url = SEARCH_API_URL + "?query=" + encoded + "&start=" + start;
 
         URI requestUri = URI.create(url);
 
         ResponseEntity<String> response = restTemplate.exchange(requestUri, HttpMethod.GET, new HttpEntity<String>(headers), String.class);
 
-        List<BookDTO> result = new ArrayList<>();
+        BookResDTO result = new BookResDTO();
 
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode items = mapper.readTree(response.getBody()).get("items");
-
+            JsonNode total = mapper.readTree(response.getBody()).get("total");
+            
+            List<BookDTO> list = new ArrayList<>();
             for (JsonNode node : items) {
                 BookDTO dto = new BookDTO();
 
@@ -101,12 +106,15 @@ public class BookService {
                 dto.setIsbn(node.get("isbn").asText());
                 dto.setImage(node.get("image").asText());
                 dto.setDescription(node.get("description").asText());
-                result.add(dto);
+                list.add(dto);
             }
+            result.setTotal(total.intValue());
+            result.setBookList(list);  
+            result.setKeyword(keyword);
+            result.setStart(start);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return result;
     }
 }
