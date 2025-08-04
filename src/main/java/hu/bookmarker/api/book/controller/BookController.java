@@ -23,7 +23,7 @@ public class BookController {
     @GetMapping("/")
     public BookResDTO getBooks(@RequestParam(required = true, name = "keyword") final String keyword
                              , @RequestParam(required = true, name = "start") final int start) {
-        log.info("*** getBooks : {} ***", keyword, start);
+        log.info("*** getBooks : {} {} ***", keyword, start);
         BookSearchDTO reqDto = BookSearchDTO.builder().keyword(keyword).start(start).build();
         return bookService.getBooks(reqDto);
     }
