@@ -18,7 +18,8 @@
 
   <select id="selectReviews" parameterType="hu.bookmarker.api.review.model.ReviewDTO" resultType="hu.bookmarker.api.review.model.ReviewDTO">
   /* IReviewMapper.selectReviews : 리뷰 목록 조회  */
-  SELECT A.REVIEW_RATING
+  SELECT A.REVIEW_ID
+       , A.REVIEW_RATING
        , A.ISBN
        , B.TITLE
        , B.IMAGE
