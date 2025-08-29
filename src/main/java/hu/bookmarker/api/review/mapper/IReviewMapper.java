@@ -3,6 +3,7 @@ package hu.bookmarker.api.review.mapper;
 import java.util.List;
 
 import hu.bookmarker.api.review.model.ReviewDTO;
+import hu.bookmarker.api.review.model.ReviewRatingDTO;
 
 public interface IReviewMapper {
     
@@ -40,4 +41,11 @@ public interface IReviewMapper {
      * @return
      */
     int deleteMyReview(ReviewDTO reqDto);
+
+    /**
+     * 나의 별점 조회 
+     * @param reqDto
+     * @return
+     */
+    List<ReviewRatingDTO> selectMyRating(ReviewDTO reqDto);
 }

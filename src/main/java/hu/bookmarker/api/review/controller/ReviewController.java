@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import hu.bookmarker.api.review.model.ReviewDTO;
+import hu.bookmarker.api.review.model.ReviewRatingDTO;
 import hu.bookmarker.api.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,4 +75,12 @@ public class ReviewController {
                                     .reviewId(reviewId).build();
         return reviewService.removeMyReview(reviewDto);
     }
+
+    @GetMapping("/rating")
+    public List<ReviewRatingDTO> getMyRating(@RequestParam(required = true, name = "userId") final String userId) {
+        log.info("*** getMyRating ***");
+        ReviewDTO reviewDTO = ReviewDTO.builder()
+                                    .userId(userId).build();
+        return reviewService.getMyRating(reviewDTO);
+        }
 }

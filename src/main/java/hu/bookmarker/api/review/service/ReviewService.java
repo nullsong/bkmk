@@ -8,6 +8,7 @@ import hu.bookmarker.api.book.model.BookDTO;
 import hu.bookmarker.api.book.service.BookService;
 import hu.bookmarker.api.review.mapper.IReviewMapper;
 import hu.bookmarker.api.review.model.ReviewDTO;
+import hu.bookmarker.api.review.model.ReviewRatingDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -48,14 +49,21 @@ public class ReviewService {
     /**
      * 나의 리뷰 수정
      */
-    public int modifyMyReview(ReviewDTO reviewDTO) {
-        return reviewMapper.updateMyReview(reviewDTO);
+    public int modifyMyReview(ReviewDTO reqDto) {
+        return reviewMapper.updateMyReview(reqDto);
     }
 
     /**
      * 나의 리뷰 삭제
      */
-    public int removeMyReview(ReviewDTO reviewDTO) {
-        return reviewMapper.deleteMyReview(reviewDTO);
+    public int removeMyReview(ReviewDTO reqDto) {
+        return reviewMapper.deleteMyReview(reqDto);
+    }
+
+    /**
+     * 나의 별점 조회
+     */
+    public List<ReviewRatingDTO> getMyRating(ReviewDTO reqDto) {
+        return reviewMapper.selectMyRating(reqDto);
     }
 }
