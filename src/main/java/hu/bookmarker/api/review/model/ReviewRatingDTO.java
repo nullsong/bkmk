@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewRatingDTO {
-    private int reviewRating;
+    private String reviewRating;
     private int count;  
 }

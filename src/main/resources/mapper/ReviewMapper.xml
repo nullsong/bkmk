@@ -69,4 +69,20 @@
      AND REVIEW_ID = #{reviewId} 
   </delete>
 
+  <select id="selectMyRating" parameterType="hu.bookmarker.api.review.model.ReviewDTO" resultType="hu.bookmarker.api.review.model.ReviewRatingDTO">
+  /* IReviewMapper.selectMyReview : 나의 별점 조회  */
+  SELECT CONCAT(A.RATING, '점') AS REVIEW_RATING
+       , COUNT(B.REVIEW_RATING) AS COUNT
+    FROM (SELECT 1 AS RATING 
+           UNION SELECT 2 
+           UNION SELECT 3 
+           UNION SELECT 4 
+           UNION SELECT 5
+       ) A
+    LEFT JOIN REVIEWS B
+      ON A.RATING = B.REVIEW_RATING 
+     AND B.USER_ID = #{userId}
+   GROUP BY A.RATING
+   ORDER BY A.RATING
+  </select>
 </mapper>
