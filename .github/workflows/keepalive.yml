@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping
-        run: curl -fsS -m 10 --retry 3 https://bkmk-jl47.onrender.com/ping || true
+        run: curl -fsS -m 10 --retry 3 https://bkmk-1.onrender.com/ping || true
